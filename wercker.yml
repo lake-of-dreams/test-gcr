@@ -9,12 +9,12 @@ ubuntu-push-to-gcr:
 #      code: |
 #        apk update
 #        apk add ca-certificates
+#  - script:
+ #     name: Remove Pipeline
+ #     code: rm -rf /pipeline
   - script:
-      name: Remove Pipeline
-      code: rm -rf /pipeline
-  #- script:
-   #   name: echo key
-   #   code: echo "$GCR_JSON_KEY_FILE"
+      name: echo key
+      code: echo "$GCR_JSON_KEY_FILE"
   - internal/docker-push:
       username: _json_key
       password: "$GCR_JSON_KEY_FILE"    
@@ -34,12 +34,12 @@ alpine-push-to-gcr:
       code: |
         apk update
         apk add ca-certificates
-  - script:
-      name: Remove Pipeline
-      code: rm -rf /pipeline
   #- script:
-   #   name: echo key
-   #   code: echo "$GCR_JSON_KEY_FILE"
+   #   name: Remove Pipeline
+    #  code: rm -rf /pipeline
+  - script:
+      name: echo key
+      code: echo "$GCR_JSON_KEY_FILE"
   - internal/docker-push:
       username: _json_key
       password: "$GCR_JSON_KEY_FILE"    
