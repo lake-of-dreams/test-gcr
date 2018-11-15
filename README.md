@@ -1,2 +1,2 @@
 # test-gcr
-run both now
+try without disable sync - dev and app
