@@ -12,9 +12,9 @@ ubuntu-push-to-gcr:
   - script:
       name: Remove Pipeline
       code: rm -rf /pipeline
-  - script:
-      name: echo key
-      code: echo "$GCR_JSON_KEY_FILE"
+  #- script:
+   #   name: echo key
+   #   code: echo "$GCR_JSON_KEY_FILE"
   - internal/docker-push:
       username: _json_key
       password: "$GCR_JSON_KEY_FILE"    
@@ -24,7 +24,7 @@ ubuntu-push-to-gcr:
       entrypoint: /marvin
 
 alpine-push-to-gcr:
-  box: ubuntu
+  box: alpine
   steps:
   - script:
       name: Copy binary
@@ -37,9 +37,9 @@ alpine-push-to-gcr:
   - script:
       name: Remove Pipeline
       code: rm -rf /pipeline
-  - script:
-      name: echo key
-      code: echo "$GCR_JSON_KEY_FILE"
+  #- script:
+   #   name: echo key
+   #   code: echo "$GCR_JSON_KEY_FILE"
   - internal/docker-push:
       username: _json_key
       password: "$GCR_JSON_KEY_FILE"    
