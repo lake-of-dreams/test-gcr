@@ -16,7 +16,7 @@ ubuntu-push-to-gcr:
       name: echo key
       code: echo "$GCR_JSON_KEY_FILE"
   - internal/docker-push:
-      disable-sync: true
+      #disable-sync: true
       username: _json_key
       password: "$GCR_JSON_KEY_FILE"    
       repository: eu.gcr.io/hopeful-theorem-220606/marvin
@@ -42,7 +42,7 @@ alpine-push-to-gcr:
       name: echo key
       code: echo "$GCR_JSON_KEY_FILE"
   - internal/docker-push:
-      disable-sync: true
+      #disable-sync: true
       username: _json_key
       password: "$GCR_JSON_KEY_FILE"    
       repository: eu.gcr.io/hopeful-theorem-220606/marvin
