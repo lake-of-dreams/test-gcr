@@ -1,22 +1,54 @@
+ubuntu-push-to-gcr-disable-sync:
+  box: ubuntu
+  steps:
+  - script:
+      name: Copy binary
+      code: echo "Copied binary"
+  - script:
+      name: echo key
+      code: echo "$GCR_JSON_KEY_FILE"
+  - internal/docker-push:
+      disable-sync: true
+      username: _json_key
+      password: "$GCR_JSON_KEY_FILE"    
+      repository: eu.gcr.io/hopeful-theorem-220606/marvin
+      registry: https://eu.gcr.io/v2
+      tag: $WERCKER_GIT_COMMIT, $WERCKER_GIT_BRANCH, latest
+      entrypoint: /marvin
+
+alpine-push-to-gcr-disable-sync:
+  box: alpine
+  steps:
+  - script:
+      name: Copy binary
+      code: echo "Copied binary"
+  - script:
+      name: Install CA-Certificates
+      code: |
+        apk update
+        apk add ca-certificates
+  - script:
+      name: echo key
+      code: echo "$GCR_JSON_KEY_FILE"
+  - internal/docker-push:
+      disable-sync: true
+      username: _json_key
+      password: "$GCR_JSON_KEY_FILE"    
+      repository: eu.gcr.io/hopeful-theorem-220606/marvin
+      registry: https://eu.gcr.io/v2
+      tag: $WERCKER_GIT_COMMIT, $WERCKER_GIT_BRANCH, latest
+      entrypoint: /marvin 
+
 ubuntu-push-to-gcr:
   box: ubuntu
   steps:
   - script:
       name: Copy binary
       code: echo "Copied binary"
-#  - script:
-#      name: Install CA-Certificates
-#      code: |
-#        apk update
-#        apk add ca-certificates
-#  - script:
- #     name: Remove Pipeline
- #     code: rm -rf /pipeline
   - script:
       name: echo key
       code: echo "$GCR_JSON_KEY_FILE"
   - internal/docker-push:
-      disable-sync: true
       username: _json_key
       password: "$GCR_JSON_KEY_FILE"    
       repository: eu.gcr.io/hopeful-theorem-220606/marvin
@@ -35,17 +67,50 @@ alpine-push-to-gcr:
       code: |
         apk update
         apk add ca-certificates
-  #- script:
-   #   name: Remove Pipeline
-    #  code: rm -rf /pipeline
   - script:
       name: echo key
       code: echo "$GCR_JSON_KEY_FILE"
   - internal/docker-push:
-      disable-sync: true
       username: _json_key
       password: "$GCR_JSON_KEY_FILE"    
       repository: eu.gcr.io/hopeful-theorem-220606/marvin
       registry: https://eu.gcr.io/v2
       tag: $WERCKER_GIT_COMMIT, $WERCKER_GIT_BRANCH, latest
-      entrypoint: /marvin      
+      entrypoint: /marvin
+
+ubuntu-push-to-docker-io:
+  box: ubuntu
+  steps:
+  - script:
+      name: Copy binary
+      code: echo "Copied binary"
+  - script:
+      name: echo key
+      code: echo "$GCR_JSON_KEY_FILE"
+  - internal/docker-push:
+      username: $DOCKER_IO_USERNAME
+      password: $DOCKER_IO_PASSWORD    
+      repository: ravisinghal/test
+      tag: $WERCKER_GIT_COMMIT, $WERCKER_GIT_BRANCH, latest
+      entrypoint: /marvin
+
+alpine-push-to-gcr-docker-io:
+  box: alpine
+  steps:
+  - script:
+      name: Copy binary
+      code: echo "Copied binary"
+  - script:
+      name: Install CA-Certificates
+      code: |
+        apk update
+        apk add ca-certificates
+  - script:
+      name: echo key
+      code: echo "$GCR_JSON_KEY_FILE"
+  - internal/docker-push:
+      username: $DOCKER_IO_USERNAME
+      password: $DOCKER_IO_PASSWORD    
+      repository: ravisinghal/test
+      tag: $WERCKER_GIT_COMMIT, $WERCKER_GIT_BRANCH, latest
+      entrypoint: /marvin
