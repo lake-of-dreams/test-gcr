@@ -13,7 +13,7 @@ ubuntu-push-to-gcr-disable-sync:
       password: "$GCR_JSON_KEY_FILE"    
       repository: eu.gcr.io/hopeful-theorem-220606/marvin
       registry: https://eu.gcr.io/v2
-      tag: $WERCKER_GIT_COMMIT, $WERCKER_GIT_BRANCH, latest
+      tag: $WERCKER_GIT_COMMIT,latest
       entrypoint: /marvin
 
 alpine-push-to-gcr-disable-sync:
@@ -36,7 +36,7 @@ alpine-push-to-gcr-disable-sync:
       password: "$GCR_JSON_KEY_FILE"    
       repository: eu.gcr.io/hopeful-theorem-220606/marvin
       registry: https://eu.gcr.io/v2
-      tag: $WERCKER_GIT_COMMIT, $WERCKER_GIT_BRANCH, latest
+      tag: $WERCKER_GIT_COMMIT,latest
       entrypoint: /marvin 
 
 ubuntu-push-to-gcr:
@@ -53,7 +53,7 @@ ubuntu-push-to-gcr:
       password: "$GCR_JSON_KEY_FILE"    
       repository: eu.gcr.io/hopeful-theorem-220606/marvin
       registry: https://eu.gcr.io/v2
-      tag: $WERCKER_GIT_COMMIT, $WERCKER_GIT_BRANCH, latest
+      tag: $WERCKER_GIT_COMMIT,latest
       entrypoint: /marvin
 
 alpine-push-to-gcr:
@@ -75,7 +75,7 @@ alpine-push-to-gcr:
       password: "$GCR_JSON_KEY_FILE"    
       repository: eu.gcr.io/hopeful-theorem-220606/marvin
       registry: https://eu.gcr.io/v2
-      tag: $WERCKER_GIT_COMMIT, $WERCKER_GIT_BRANCH, latest
+      tag: $WERCKER_GIT_COMMIT,latest
       entrypoint: /marvin
 
 ubuntu-push-to-docker-io:
@@ -91,7 +91,7 @@ ubuntu-push-to-docker-io:
       username: $DOCKER_IO_USERNAME
       password: $DOCKER_IO_PASSWORD    
       repository: ravisinghal/test
-      tag: $WERCKER_GIT_COMMIT, $WERCKER_GIT_BRANCH, latest
+      tag: $WERCKER_GIT_COMMIT,latest
       entrypoint: /marvin
 
 alpine-push-to-gcr-docker-io:
@@ -112,5 +112,5 @@ alpine-push-to-gcr-docker-io:
       username: $DOCKER_IO_USERNAME
       password: $DOCKER_IO_PASSWORD    
       repository: ravisinghal/test
-      tag: $WERCKER_GIT_COMMIT, $WERCKER_GIT_BRANCH, latest
+      tag: $WERCKER_GIT_COMMIT,latest
       entrypoint: /marvin
