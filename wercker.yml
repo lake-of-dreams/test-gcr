@@ -114,3 +114,24 @@ alpine-push-to-gcr-docker-io:
       repository: ravisinghal/test
       tag: $WERCKER_GIT_COMMIT,latest
       entrypoint: /marvin
+      
+alpine-push-to-gcr-docker-io-test:
+  box: alpine
+  steps:
+  - script:
+      name: Copy binary
+      code: echo "Copied binary"
+  - script:
+      name: Install CA-Certificates
+      code: |
+        apk update
+        apk add ca-certificates
+  - script:
+      name: echo key
+      code: echo "$GCR_JSON_KEY_FILE"
+  - internal/docker-push:
+      username: $DOCKER_IO_USERNAME
+      password: $DOCKER_IO_PASSWORD    
+      repository: ravisinghal/test
+      tag: $WERCKER_GIT_COMMIT,latest
+      entrypoint: /marvin      
