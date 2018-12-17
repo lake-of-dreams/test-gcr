@@ -1,2 +1,2 @@
 # test-gcr
-4
+go
